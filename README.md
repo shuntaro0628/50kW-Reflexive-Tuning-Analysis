@@ -1,131 +1,145 @@
 # 50 kW Reflexive Tuning Networks - Loss Breakdown Analysis
 
-This repository contains the computational analysis and visualization code for the paper:
+## 📄 Overview
+
+This repository contains the loss analysis code for the IEEE Open Journal of Power Electronics paper:
 
 **"50 kW Reflexive Tuning Networks With Low Uncoupled Transmitter Currents for Dynamic Inductive Power Transfer Systems"**
 
-Published in: IEEE Open Journal of Power Electronics  
-DOI: 10.1109/OJPEL.2024.3379846  
-Authors: Shuntaro Inoue, Samuel Kiguthi, Jonathan Newman, Timothy Goodale, Chakridhar Reddy Teeneti, Bryce Hesterman, Abhilash Kamineni, and Regan Andrew Zane
+- **Journal**: IEEE Open Journal of Power Electronics
+- **DOI**: 10.1109/OJPEL.2024.3379846
+- **Authors**: Shuntaro Inoue, Samuel Kiguthi, Jonathan Newman, Timothy Goodale, Chakridhar Reddy Teeneti, Bryce Hesterman, Abhilash Kamineni, and Regan Andrew Zane
 
-## 📋 Overview
+## 🔬 Research Background
 
-This repository provides the computational tools and analysis scripts used to generate the loss breakdown analysis and efficiency calculations presented in the paper. The code includes:
+### Problem Statement
+In Dynamic Wireless Power Transfer (DWPT) systems, the coupling coefficient varies significantly as vehicles move. Conventional Double LCCL topology suffers from high currents flowing through uncoupled transmitter coils, leading to efficiency degradation.
 
-- **Reflexive Tuning loss analysis** (Fig. 21 in the paper)
-- **Double LCCL loss analysis** (comparison with conventional method)
-- **Theoretical calculations** for 50 kW dynamic inductive power transfer systems
-- **Visualization tools** for loss distribution pie charts
-
-## 🎯 Key Features
-
-### Reflexive Tuning Analysis
-- Loss breakdown calculation for 4-transmitter coil system
-- Uncoupled transmitter current reduction analysis
-- Efficiency comparison with conventional double-sided LCC tuning
-- Theoretical validation of reflexive tuning principles
-
-### Loss Components Analyzed
-- **Coil losses**: L1, L2, L3, L4, Lr
-- **Capacitor losses**: C1s, C1p, C2s, C2p, C3s, C3p, C4s, C4p, Crs, Crp
-- **Filter losses**: Lf, Cf
-- **Power electronics losses**: Inverter switching, Diode rectifier, Snubber
-- **System efficiency**: Single vs. four-transmitter configurations
+### Proposed Solution: Reflexive Tuning
+- **Adaptive Coupling Control**: Adjusts reflected reactance based on coupling conditions
+- **Uncoupled Current Reduction**: Achieves 37% current reduction
+- **System Efficiency Improvement**: Reaches 90% DC-DC efficiency (50 kW, 85 kHz)
 
 ## 📁 Repository Structure
 
-```
-├── LossBreakDown_50kW_ReflexiveTuning.ipynb    # Reflexive Tuning analysis
-├── LossBreakdown_50kW_Double_LCCL.ipynb        # Double LCCL analysis
-├── MagneticParameters.xlsx                      # System parameters
-├── LossBreakdown_Reflexive.xlsx                 # Output data (Reflexive)
-├── LossBreakdown_LCCL.xlsx                      # Output data (LCCL)
-├── requirements.txt                             # Python dependencies
-└── README.md                                    # This file
-```
+### Jupyter Notebooks
+- **`LossBreakDown_50kW_ReflexiveTuning.ipynb`**: Reflexive Tuning analysis (Paper Fig. 21(a))
+- **`LossBreakdown_50kW_Double_LCCL.ipynb`**: Conventional Double LCCL analysis (Paper Fig. 21(b))
+
+### Data Files
+- **`LossBreakdown_Reflexive.xlsx`**: Reflexive Tuning analysis results
+- **`LossBreakdown_LCCL.xlsx`**: Double LCCL analysis results
+- **`MagneticParameters.xlsx`**: System parameters
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.7 or higher
-- Jupyter Notebook or JupyterLab
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/50kW-Reflexive-Tuning-Analysis.git
-   cd 50kW-Reflexive-Tuning-Analysis
-   ```
-
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Run the analysis**
-   ```bash
-   jupyter notebook
-   ```
+```bash
+pip install pandas numpy matplotlib seaborn openpyxl
+```
 
 ### Usage
+1. **Clone the repository**
+2. **Launch Jupyter Notebook**
+3. **Run the notebooks**
+   - `LossBreakDown_50kW_ReflexiveTuning.ipynb`: Novel method analysis
+   - `LossBreakdown_50kW_Double_LCCL.ipynb`: Conventional method comparison
 
-1. **Open `LossBreakDown_50kW_ReflexiveTuning.ipynb`**
-   - This notebook contains the Reflexive Tuning analysis
-   - Generates the loss breakdown pie chart (Fig. 21 in the paper)
-   - Calculates system efficiency and loss distribution
+## 📊 Analysis Results
 
-2. **Open `LossBreakdown_50kW_Double_LCCL.ipynb`**
-   - This notebook contains the conventional Double LCCL analysis
-   - Provides comparison with Reflexive Tuning method
-   - Shows loss distribution for conventional approach
+### Loss Breakdown (Paper Fig. 21)
 
-## 📊 Key Results
+#### Fig. 21(a) - Reflexive Tuning
+- **L1**: Main transmitter coil loss
+- **C1s, C1p, C1add**: Primary side capacitor losses
+- **L2, L3, L4**: Uncoupled transmitter coil losses (3 systems)
+- **C2s-C4s, C2p-C4p, C2add-C4add**: Uncoupled capacitor losses
+- **Lf, Cf**: Filter losses
+- **Lr**: Receiver coil loss
+- **Crs, Crp, Cradd**: Secondary side capacitor losses
+- **Inverter**: Switching losses
+- **Diode rectifier & snubber**: Rectification and snubber losses
 
-### Reflexive Tuning Performance
-- **37% reduction** in uncoupled transmitter current compared to conventional method
-- **90% DC-DC efficiency** achieved with 223 mm air gap
-- **Dynamic operation** capability up to 60 km/h vehicle speed
+#### Fig. 21(b) - Double LCCL
+- Similar loss structure but with higher uncoupled currents
 
-### Loss Distribution (Fig. 21)
-The pie chart shows the detailed loss breakdown for the 4-transmitter Reflexive Tuning system:
-- Coil losses (L1, L2, L3, L4, Lr)
-- Capacitor losses (C1s, C1p, C2s, C2p, C3s, C3p, C4s, C4p, Crs, Crp)
-- Filter losses (Lf, Cf)
-- Power electronics losses (Inverter, Diode, Snubber)
+### Performance Comparison
+| Parameter | Reflexive Tuning | Double LCCL |
+|-----------|------------------|-------------|
+| DC-DC Efficiency | 90% | Lower |
+| Uncoupled Current Reduction | 37% | 0% |
+| Output Power | 50 kW | 50 kW |
+| Operating Frequency | 85 kHz | 85 kHz |
 
-## 🔬 Technical Details
+## 🔧 Technical Details
 
-### System Parameters
-- **Power**: 50 kW
-- **Frequency**: 85 kHz
-- **Voltage**: 400 V DC
-- **Air gap**: 223 mm
-- **Quality factors**: QL = 400, QC = 500
+### System Specifications
+```python
+Pout = 50000  # 50 kW
+f = 85e3      # 85 kHz
+Vdc = 400     # 400 V
+Vbat = 400    # 400 V
+QL = 400      # Inductor quality factor
+QC = 500      # Capacitor quality factor
+```
 
-### Theoretical Framework
-The analysis is based on the Reflexive Tuning theory presented in the paper:
-- Coupling coefficient adaptation
-- Reflected reactance utilization
-- Dynamic current control
+### Reflexive Tuning Theory
+```python
+# Coupling coefficient adaptation
+k_x0y0 = df.loc[2, 'k_x0_y0']  # Current coupling coefficient
+k_lim = df.loc[2, 'k_lim']     # Limiting coupling coefficient
 
-## 📈 Validation
+# Reflected reactance calculation
+Req2 = omega0*Vbat*L1_x0y0**0.5*Lr_x0y0*c1*abs(k_lim**2-k_x0y0**2)/(k_x0y0*(Lr_x0y0*Vdc**2-L1_x0y0*Vbat**2*k_x0y0**2*c2**2*c1**2)**0.5)
+```
 
-The computational results have been validated against:
-- **Experimental measurements** from 50 kW prototype
-- **Simulation results** using circuit simulation tools
-- **Theoretical analysis** based on electromagnetic theory
+### LCCL Theoretical Foundation
+Double LCCL analysis uses theoretical equations from:
 
-## 🤝 Contributing
+**"Fast Design Optimization Method Utilizing a Combination of Artificial Neural Networks and Genetic Algorithms for Dynamic Inductive Power Transfer Systems"**
+- **Journal**: IEEE Open Journal of Power Electronics
+- **DOI**: 10.1109/OJPEL.2022.3224422
 
-We welcome contributions to improve the analysis and visualization tools. Please feel free to:
-- Report issues or bugs
-- Suggest improvements
-- Submit pull requests
+#### Key Theoretical Equations
+```python
+# Design constants
+c1 = math.pi * w * L1 * I1 * math.sqrt(2) / (4 * Vdc)  # Primary side
+c2 = (math.pi**2 * w * math.sqrt(L1 * Lr) * Pout) / (8 * k_x0y0 * c1 * Vdc * Vbat)  # Secondary side
 
-## 📄 Citation
+# Current calculations
+I1a = (4 * c1 * c2 * Vbat * k_x0y0) / (math.pi * w * math.sqrt(L1) * math.sqrt(Lr)) / math.sqrt(2)
+I1b = (4 * c1 * Vdc) / (math.pi * w * L1) / math.sqrt(2)
 
-If you use this code in your research, please cite the original paper:
+# Loss calculations
+Ploss = omega * L1 * I1**2 / Qcoil + omega * Lr * Ir**2 / Qcoil
+```
+
+## 🎯 Applications
+
+### Research Applications
+- **Academic Research**: Understanding Reflexive Tuning principles
+- **System Design**: Reference for similar WPT system design
+- **Performance Analysis**: Loss analysis methodology learning
+- **Optimization Studies**: Parameter optimization framework
+
+### Industry Applications
+- **EV Charging**: Dynamic wireless charging system design
+- **Industrial WPT**: High-power wireless power transfer
+- **System Integration**: Component selection and sizing
+- **Performance Validation**: Experimental result comparison
+
+## 📚 Educational Value
+
+This repository is suitable for learning:
+- **Power Electronics**: Resonant converter design
+- **Wireless Power Transfer**: Dynamic WPT system analysis
+- **Loss Analysis**: Comprehensive loss modeling
+- **System Optimization**: Multi-parameter optimization
+- **Research Methodology**: Academic paper implementation
+
+## 📝 Citation
+
+Please cite the following papers when using this code:
 
 ```bibtex
 @article{inoue2024reflexive,
@@ -135,19 +149,34 @@ If you use this code in your research, please cite the original paper:
   year={2024},
   doi={10.1109/OJPEL.2024.3379846}
 }
+
+@article{inoue2022fast,
+  title={Fast Design Optimization Method Utilizing a Combination of Artificial Neural Networks and Genetic Algorithms for Dynamic Inductive Power Transfer Systems},
+  author={Inoue, Shuntaro and Goodrich, Dakota and Saha, Shaju and Nimri, Reebal and Kamineni, Abhilash and Flann, Nicholas S.},
+  journal={IEEE Open Journal of Power Electronics},
+  volume={3},
+  pages={915--929},
+  year={2022},
+  doi={10.1109/OJPEL.2022.3224422}
+}
 ```
+
+## 🤝 Contributing
+
+- Bug reports and improvement suggestions are welcome
+- Adding new analysis features
+- Documentation improvements
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details
 
 ## 📞 Contact
 
-For questions about the code or analysis:
 - **Author**: Shuntaro Inoue
-- **Email**: shuntaro0628@gmail.com
-- **Institution**: Utah State University
-
-## 📜 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+- **Email**: [Your Email]
+- **Institution**: [Your Institution]
 
 ---
 
-**Note**: This code is provided as supplementary material to the IEEE Open Journal of Power Electronics paper. For complete understanding, please refer to the full paper for theoretical background and experimental validation. 
+**Note**: This code is provided as supplementary material to enhance understanding of the paper. For complete theoretical background and experimental validation, please refer to the original papers. 
