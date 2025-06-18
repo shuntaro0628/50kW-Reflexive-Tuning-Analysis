@@ -77,7 +77,7 @@ The code generates two detailed loss distribution pie charts as shown in Fig. 21
 - **Lr**: Receiver coil loss
 - **Crs, Crp, Cradd**: Secondary side capacitor losses
 - **Inverter**: Switching losses
-- **Diode rectifier & snubber**: Rectification losses
+- **Diode rectifier**: Rectification losses
 
 
 ## 🔧 Technical Details
