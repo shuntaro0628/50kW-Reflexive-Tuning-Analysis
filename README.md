@@ -114,15 +114,6 @@ Double LCCL analysis uses theoretical equations from:
 - **System Integration**: Component selection and sizing
 - **Performance Validation**: Experimental result comparison
 
-## 📚 Educational Value
-
-This repository is suitable for learning:
-- **Power Electronics**: Resonant converter design
-- **Wireless Power Transfer**: Dynamic WPT system analysis
-- **Loss Analysis**: Comprehensive loss modeling
-- **System Optimization**: Multi-parameter optimization
-- **Research Methodology**: Academic paper implementation
-
 ## 📝 Citation
 
 Please cite the following papers when using this code:
