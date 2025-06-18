@@ -63,14 +63,6 @@ pip install pandas numpy matplotlib seaborn openpyxl
 #### Fig. 21(b) - Double LCCL
 - Similar loss structure but with higher uncoupled currents
 
-### Performance Comparison
-| Parameter | Reflexive Tuning | Double LCCL |
-|-----------|------------------|-------------|
-| DC-DC Efficiency | 90% | Lower |
-| Uncoupled Current Reduction | 37% | 0% |
-| Output Power | 50 kW | 50 kW |
-| Operating Frequency | 85 kHz | 85 kHz |
-
 ## 🔧 Technical Details
 
 ### System Specifications
@@ -83,15 +75,6 @@ QL = 400      # Inductor quality factor
 QC = 500      # Capacitor quality factor
 ```
 
-### Reflexive Tuning Theory
-```python
-# Coupling coefficient adaptation
-k_x0y0 = df.loc[2, 'k_x0_y0']  # Current coupling coefficient
-k_lim = df.loc[2, 'k_lim']     # Limiting coupling coefficient
-
-# Reflected reactance calculation
-Req2 = omega0*Vbat*L1_x0y0**0.5*Lr_x0y0*c1*abs(k_lim**2-k_x0y0**2)/(k_x0y0*(Lr_x0y0*Vdc**2-L1_x0y0*Vbat**2*k_x0y0**2*c2**2*c1**2)**0.5)
-```
 
 ### LCCL Theoretical Foundation
 Double LCCL analysis uses theoretical equations from:
@@ -99,20 +82,6 @@ Double LCCL analysis uses theoretical equations from:
 **"Fast Design Optimization Method Utilizing a Combination of Artificial Neural Networks and Genetic Algorithms for Dynamic Inductive Power Transfer Systems"**
 - **Journal**: IEEE Open Journal of Power Electronics
 - **DOI**: 10.1109/OJPEL.2022.3224422
-
-#### Key Theoretical Equations
-```python
-# Design constants
-c1 = math.pi * w * L1 * I1 * math.sqrt(2) / (4 * Vdc)  # Primary side
-c2 = (math.pi**2 * w * math.sqrt(L1 * Lr) * Pout) / (8 * k_x0y0 * c1 * Vdc * Vbat)  # Secondary side
-
-# Current calculations
-I1a = (4 * c1 * c2 * Vbat * k_x0y0) / (math.pi * w * math.sqrt(L1) * math.sqrt(Lr)) / math.sqrt(2)
-I1b = (4 * c1 * Vdc) / (math.pi * w * L1) / math.sqrt(2)
-
-# Loss calculations
-Ploss = omega * L1 * I1**2 / Qcoil + omega * Lr * Ir**2 / Qcoil
-```
 
 ## 🎯 Applications
 
@@ -161,12 +130,6 @@ Please cite the following papers when using this code:
 }
 ```
 
-## 🤝 Contributing
-
-- Bug reports and improvement suggestions are welcome
-- Adding new analysis features
-- Documentation improvements
-
 ## 📄 License
 
 MIT License - see [LICENSE](LICENSE) file for details
@@ -174,8 +137,8 @@ MIT License - see [LICENSE](LICENSE) file for details
 ## 📞 Contact
 
 - **Author**: Shuntaro Inoue
-- **Email**: [Your Email]
-- **Institution**: [Your Institution]
+- **Email**: shuntaro@ieee.org
+- **Institution**: Utah State University
 
 ---
 
