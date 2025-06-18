@@ -49,7 +49,12 @@ pip install pandas numpy matplotlib seaborn openpyxl
 
 ### Loss Breakdown (Paper Fig. 21)
 
+The code generates two detailed loss distribution pie charts as shown in Fig. 21 of the paper:
+
 #### Fig. 21(a) - Reflexive Tuning
+![Reflexive Tuning Loss Breakdown](Reflexive.png)
+
+**Key Components**:
 - **L1**: Main transmitter coil loss
 - **C1s, C1p, C1add**: Primary side capacitor losses
 - **L2, L3, L4**: Uncoupled transmitter coil losses (3 systems)
@@ -61,7 +66,19 @@ pip install pandas numpy matplotlib seaborn openpyxl
 - **Diode rectifier & snubber**: Rectification and snubber losses
 
 #### Fig. 21(b) - Double LCCL
-- Similar loss structure but with higher uncoupled currents
+![Double LCCL Loss Breakdown](LCCL.png)
+
+**Key Components**:
+- **L1**: Main transmitter coil loss
+- **C1s, C1p, C1add**: Primary side capacitor losses
+- **L2, L3, L4**: Uncoupled transmitter coil losses (3 systems)
+- **C2s-C4s, C2p-C4p, C2add-C4add**: Uncoupled capacitor losses
+- **Lf, Cf**: Filter losses
+- **Lr**: Receiver coil loss
+- **Crs, Crp, Cradd**: Secondary side capacitor losses
+- **Inverter**: Switching losses
+- **Diode rectifier & snubber**: Rectification and snubber losses
+
 
 ## 🔧 Technical Details
 
@@ -129,7 +146,6 @@ Please cite the following papers when using this code:
   doi={10.1109/OJPEL.2022.3224422}
 }
 ```
-
 ## 📄 License
 
 MIT License - see [LICENSE](LICENSE) file for details
